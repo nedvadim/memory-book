@@ -1,0 +1,2 @@
+export const OPEN_MAIN_DRAWER = 'OPEN_MAIN_DRAWER';
+export const CLOSE_MAIN_DRAWER = 'CLOSE_MAIN_DRAWER';
