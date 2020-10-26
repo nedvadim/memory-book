@@ -23,8 +23,8 @@ export default class MainDrawer extends React.Component {
                 <Drawer anchor='left' open={this.props.isOpen} onClose={this.props.onClose}>
                     <List>
                         {this.state.navItems.map((item) => (
-                            <Link to={item.to} onClick={this.props.onClose} className={classes.DrawerItem}>
-                                <ListItem button key={item.navName}>
+                            <Link to={item.to} onClick={this.props.onClose} className={classes.DrawerItem} key={item.navName}>
+                                <ListItem button>
                                     <ListItemIcon>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.navName} />
                                 </ListItem>
