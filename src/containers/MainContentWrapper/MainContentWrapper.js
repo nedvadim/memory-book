@@ -7,6 +7,7 @@ import Persons from "../../components/Content/Persons/Persons";
 import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
 import ContentSection from "../ContentSection/ContentSection";
+import { AuthProvider } from '../../auth/Auth'
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,27 +17,29 @@ class MainContentWrapper extends React.Component {
     render () {
         return (
             <React.Fragment>
-                <Router>
-                    <>
-                        <Header onMenuOpen={this.props.onDrawerOpen} />
-                        <MainDrawer
-                            isOpen={this.props.isDrOpen}
-                            onClose={this.props.onDrawerClose}/>
-                    </>
-                    <ContentSection>
-                        <Switch>
-                            <Route path="/" exact>
-                                <WelcomePage />
-                            </Route>
-                            <Route path="/persons">
-                                <Persons />
-                            </Route>
-                            <Route path="/events">
-                                <Events />
-                            </Route>
-                        </Switch>
-                    </ContentSection>
-                </Router>
+                <AuthProvider>
+                    <Router>
+                        <>
+                            <Header onMenuOpen={this.props.onDrawerOpen} />
+                            <MainDrawer
+                                isOpen={this.props.isDrOpen}
+                                onClose={this.props.onDrawerClose}/>
+                        </>
+                        <ContentSection>
+                            <Switch>
+                                <Route path="/" exact>
+                                    <WelcomePage />
+                                </Route>
+                                <Route path="/persons">
+                                    <Persons />
+                                </Route>
+                                <Route path="/events">
+                                    <Events />
+                                </Route>
+                            </Switch>
+                        </ContentSection>
+                    </Router>
+                </AuthProvider>
             </React.Fragment>
         )
     }
