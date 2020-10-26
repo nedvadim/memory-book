@@ -17,7 +17,7 @@ class MainContentWrapper extends React.Component {
     render () {
         return (
             <React.Fragment>
-                <AuthProvider>
+                {/*<AuthProvider>*/}
                     <Router>
                         <>
                             <Header onMenuOpen={this.props.onDrawerOpen} />
@@ -39,7 +39,7 @@ class MainContentWrapper extends React.Component {
                             </Switch>
                         </ContentSection>
                     </Router>
-                </AuthProvider>
+                {/*</AuthProvider>*/}
             </React.Fragment>
         )
     }
