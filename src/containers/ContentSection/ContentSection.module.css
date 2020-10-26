@@ -1,0 +1,8 @@
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px 20px;
+    height: 88vh;
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.45);
+    box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.45);
+}

@@ -1,5 +1,5 @@
 import './App.css';
-import AppContent from "./containers/AppContent/AppContent";
+import AppContent from "./containers/MainContentWrapper/MainContentWrapper";
 import React from 'react'
 
 function App() {

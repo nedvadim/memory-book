@@ -1,5 +1,7 @@
 import React from 'react'
+import classes from './MainDrawer.module.css'
 import Drawer from '@material-ui/core/Drawer';
+import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem'
 import List from '@material-ui/core/List'
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -21,10 +23,12 @@ export default class MainDrawer extends React.Component {
                 <Drawer anchor='left' open={this.props.isOpen} onClose={this.props.onClose}>
                     <List>
                         {this.state.navItems.map((item) => (
-                            <ListItem button key={item.navName}>
-                                <ListItemIcon>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.navName} />
-                            </ListItem>
+                            <Link to={item.to} onClick={this.props.onClose} className={classes.DrawerItem}>
+                                <ListItem button key={item.navName}>
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.navName} />
+                                </ListItem>
+                            </Link>
                         ))}
                     </List>
                 </Drawer>

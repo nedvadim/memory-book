@@ -6,12 +6,13 @@ import WelcomePage from "../../components/Content/WelcomePage/WelcomePage";
 import Persons from "../../components/Content/Persons/Persons";
 import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
+import ContentSection from "../ContentSection/ContentSection";
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
-class AppContent extends React.Component {
+class MainContentWrapper extends React.Component {
     render () {
         return (
             <React.Fragment>
@@ -22,17 +23,19 @@ class AppContent extends React.Component {
                             isOpen={this.props.isDrOpen}
                             onClose={this.props.onDrawerClose}/>
                     </>
-                    <Switch>
-                        <Route path="/" exact>
-                            <WelcomePage />
-                        </Route>
-                        <Route path="/persons">
-                            <Persons />
-                        </Route>
-                        <Route path="/events">
-                            <Events />
-                        </Route>
-                    </Switch>
+                    <ContentSection>
+                        <Switch>
+                            <Route path="/" exact>
+                                <WelcomePage />
+                            </Route>
+                            <Route path="/persons">
+                                <Persons />
+                            </Route>
+                            <Route path="/events">
+                                <Events />
+                            </Route>
+                        </Switch>
+                    </ContentSection>
                 </Router>
             </React.Fragment>
         )
@@ -51,4 +54,4 @@ const mapDispatchToProps = dispatch => {
         onDrawerClose: () => dispatch(closeMainDrawer())
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(AppContent);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContentWrapper);
