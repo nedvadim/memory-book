@@ -2,17 +2,38 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { openMainDrawer, closeMainDrawer } from '../../store/actions/index'
 import Header from "../../components/Header/Header";
-import WelcomePage from "../../components/WelcomePage/WelcomePage";
+import WelcomePage from "../../components/Content/WelcomePage/WelcomePage";
+import Persons from "../../components/Content/Persons/Persons";
+import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 class AppContent extends React.Component {
     render () {
         return (
             <React.Fragment>
-                <Header onMenuOpen={this.props.onDrawerOpen} />
-                <MainDrawer
-                    isOpen={this.props.isDrOpen}
-                    onClose={this.props.onDrawerClose}/>
-                <WelcomePage />
+                <Router>
+                    <>
+                        <Header onMenuOpen={this.props.onDrawerOpen} />
+                        <MainDrawer
+                            isOpen={this.props.isDrOpen}
+                            onClose={this.props.onDrawerClose}/>
+                    </>
+                    <Switch>
+                        <Route path="/" exact>
+                            <WelcomePage />
+                        </Route>
+                        <Route path="/persons">
+                            <Persons />
+                        </Route>
+                        <Route path="/events">
+                            <Events />
+                        </Route>
+                    </Switch>
+                </Router>
             </React.Fragment>
         )
     }

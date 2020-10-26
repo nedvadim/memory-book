@@ -28,7 +28,7 @@ const Header = (props) => {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    News
+                    MemoryBook
                 </Typography>
                 <Button color="inherit">Login</Button>
             </Toolbar>
