@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import app from '../../firebase/base'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -21,7 +21,14 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none'
     },
 }));
-
+const handleSignOut = () => {
+    app.auth().signOut().then(res => {
+        alert('Sign-out successful.')
+    }).catch((e) => {
+        alert(`ERROR: ${e}`);
+        // An error happened.
+    });
+};
 const Header = (props) => {
     const materialClasses = useStyles();
     return (
@@ -35,7 +42,7 @@ const Header = (props) => {
                         MemoryBook
                     </Typography>
                 </Link>
-                <Button color="inherit">Login</Button>
+                <Button color="inherit" onClick={handleSignOut}>Sign out</Button>
             </Toolbar>
         </AppBar>)
 };

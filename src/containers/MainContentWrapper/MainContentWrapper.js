@@ -7,17 +7,22 @@ import Persons from "../../components/Content/Persons/Persons";
 import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
 import ContentSection from "../ContentSection/ContentSection";
-import { AuthProvider } from '../../auth/Auth'
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+// import { AuthProvider } from '../../auth/Auth'
+import SignUp from "../../components/AuthComponents/SignUpPage/SignUp";
+import SignIn from "../../components/AuthComponents/SignInPage/SignIn";
+import Login from "../../components/AuthComponents/LoginPage/Login";
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
+
+
 class MainContentWrapper extends React.Component {
     render () {
         return (
             <React.Fragment>
-                {/*<AuthProvider>*/}
                     <Router>
                         <>
                             <Header onMenuOpen={this.props.onDrawerOpen} />
@@ -27,19 +32,15 @@ class MainContentWrapper extends React.Component {
                         </>
                         <ContentSection>
                             <Switch>
-                                <Route path="/" exact>
-                                    <WelcomePage />
-                                </Route>
-                                <Route path="/persons">
-                                    <Persons />
-                                </Route>
-                                <Route path="/events">
-                                    <Events />
-                                </Route>
+                                <PrivateRoute path="/" exact component={WelcomePage} />
+                                <Route path="/sign-up" exact component={SignUp}/>
+                                <Route path="/sign-in" exact component={SignIn}/>
+                                <Route path="/login" exact component={Login}/>
+                                <PrivateRoute path="/persons" component={Persons} />
+                                <PrivateRoute path="/events" component={Events} />
                             </Switch>
                         </ContentSection>
                     </Router>
-                {/*</AuthProvider>*/}
             </React.Fragment>
         )
     }
