@@ -19,11 +19,11 @@ const SignUp = ({history}) => {
             <form onSubmit={handleSignUp}>
                 <input name='email' type="email" placeholder='email'/>
                 <input name='password' type="password" placeholder='password'/>
-                <button type='submit'>login</button>
+                <button type='submit'>Sign Up</button>
             </form>
             <p>Already have an account?</p>
             <Link to="/login">
-                <button>Log in</button>
+                <p>Log in</p>
             </Link>
         </>
     )
