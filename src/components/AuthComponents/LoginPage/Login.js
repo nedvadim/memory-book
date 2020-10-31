@@ -22,7 +22,7 @@ import {Link} from "react-router-dom";
                  <input name='password' type="password" placeholder='password'/>
                  <button type='submit'>login</button>
                  <p>Haven't an account yet?</p>
-                 <Link to="/sign">
+                 <Link to="/sign-up">
                      <p>Sign up</p>
                  </Link>
              </form>
