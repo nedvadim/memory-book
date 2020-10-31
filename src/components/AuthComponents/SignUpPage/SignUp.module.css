@@ -1,0 +1,10 @@
+.SignUpCard {
+    width: 50%;
+    min-width: 250px;
+    margin: 25vh auto 0;
+    padding: 2rem 2rem;
+}
+.SignUpCardInput {
+    width: 100%;
+    margin: 0 auto 1rem !important;
+}
