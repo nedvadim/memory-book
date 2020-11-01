@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
     BrowserRouter as Router,
-    Switch,
-    Route
+    Switch
 } from "react-router-dom";
 
 import { openMainDrawer, closeMainDrawer } from '../../store/actions/index'
@@ -14,11 +13,28 @@ import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
 import ContentSection from "../ContentSection/ContentSection";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import SignUp from "../../components/AuthComponents/SignUpPage/SignUp";
-import SignIn from "../../components/AuthComponents/SignInPage/SignIn";
-import Login from "../../components/AuthComponents/LoginPage/Login";
+import { getApiData, postTestData } from "../../api";
 
 class MainContentWrapper extends React.Component {
+    componentDidMount() {
+        getApiData().then(res => {
+            console.log(Object.values(res.data))
+        }).catch((e) => {
+            console.log(e);
+        })
+        // postTestData({name: 'mike', age: 32}).then(res => {
+        //     console.log(res);
+        // }).catch(e => {
+        //     console.log(e)
+        // })
+    }
+    getTestData = async () => {
+        // await getApiData().then(({data}) => {
+        //     console.log(data);
+        // }).catch((e) => {
+        //     console.log(e);
+        // })
+    };
     render () {
         return (
             <React.Fragment>
