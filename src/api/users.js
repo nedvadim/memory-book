@@ -8,3 +8,7 @@ export function postUserToDataBase(data) {
     console.log("Trying to put user in DB with data...", {...data});
     return API.post(`/users.json`, {...data});
 }
+
+export function getUserData (id) {
+    return API.get(`/users.json`);
+}

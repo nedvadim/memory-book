@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import thunk from "redux-thunk";
 import mainDrawerReducer from './store/reducers/drawer'
 import currUser from './store/reducers/currentUser'
 const rootReducer = combineReducers({
@@ -22,7 +23,7 @@ const logger = store => {
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 ReactDOM.render(
     <Provider store={store}>

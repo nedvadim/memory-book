@@ -1,16 +1,23 @@
 import React, {useState} from 'react'
+import { connect } from "react-redux";
 import app from "../../../firebase/base";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {Button, Card, CardActions, CardContent, Grid, TextField, Typography} from "@material-ui/core";
 import classes from "../AuthPage.module.css";
 import '../../../App.css'
- const Login = ({history}) => {
+// import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";
+// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import { userLoggingInSystem } from "../../../store/actions/currentUser";
+
+const Login = ({history}) => {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
 
      const handleLogin = async () => {
          try {
              await app.auth().signInWithEmailAndPassword(email, password);
+             const user = app.auth().currentUser;
+             console.log(user);
              history.push('/');
          } catch (e) {
              alert(e);
@@ -60,4 +67,15 @@ import '../../../App.css'
              </React.Fragment>
      )
  };
- export default Login;
+ const mapStateToProps = state => {
+    return {
+        currentUser: state.currUser.currentUser
+    }
+ };
+ const mapDispatchToProps = dispatch => {
+   return {
+       onUserLogging:  (id) => {dispatch(userLoggingInSystem(id))}
+   }
+ };
+
+ export default connect(mapStateToProps, mapDispatchToProps)(Login);

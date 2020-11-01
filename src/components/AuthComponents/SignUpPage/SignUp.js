@@ -8,6 +8,7 @@ import { TextField, Card, CardContent, Typography, CardActions, Button, Grid } f
 import { postUserToDataBase } from "../../../api";
 import { v4 as uuidv4 } from 'uuid'
 import { userSignedUpInSystem } from "../../../store/actions";
+import {onLog} from "firebase";
 const SignUp = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,6 +19,7 @@ const SignUp = (props) => {
                     const userData = {id: uuidv4(), email};
                     postUserToDataBase({...userData})
                         .then(res => {
+                            console.log(res);
                             userData.firebaseId = res.data.name;
                             props.onUserSignUp(userData);
                             props.history.push('/');
