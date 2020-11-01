@@ -13,28 +13,12 @@ import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
 import ContentSection from "../ContentSection/ContentSection";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import { getApiData, postTestData } from "../../api";
 
 class MainContentWrapper extends React.Component {
     componentDidMount() {
-        getApiData().then(res => {
-            console.log(Object.values(res.data))
-        }).catch((e) => {
-            console.log(e);
-        })
-        // postTestData({name: 'mike', age: 32}).then(res => {
-        //     console.log(res);
-        // }).catch(e => {
-        //     console.log(e)
-        // })
+        //
     }
-    getTestData = async () => {
-        // await getApiData().then(({data}) => {
-        //     console.log(data);
-        // }).catch((e) => {
-        //     console.log(e);
-        // })
-    };
+    getTestData = async () => {};
     render () {
         return (
             <React.Fragment>

@@ -7,19 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import mainDrawerReducer from './store/reducers/drawer'
-
+import currUser from './store/reducers/currentUser'
 const rootReducer = combineReducers({
-    mainDrawer: mainDrawerReducer
-
+    mainDrawer: mainDrawerReducer,
+    currUser
 });
 
 const logger = store => {
     return next => {
         return action => {
-            console.log('Middleware - Dispatching', action);
-            const result = next(action);
-            console.log('Middleware - Next state', store.getState());
-            return result;
+            return next(action);
         }
     }
 };
