@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import app from '../../firebase/base'
-import { postData } from "../../api/users";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,15 +30,6 @@ const handleSignOut = () => {
         // An error happened.
     });
 };
-const handleBenis = async () => {
-    const email = app.auth().currentUser.email;
-    console.log(email);
-    postData('HUINA').then(res=>{
-        console.log(res)
-    }).catch(e=>{
-        console.log(e);
-    });
-};
 const Header = (props) => {
     const materialClasses = useStyles();
     return (
@@ -54,7 +44,6 @@ const Header = (props) => {
                     </Typography>
                 </Link>
                 <Button color="inherit" onClick={handleSignOut}>Sign out</Button>
-                <Button color="inherit" onClick={handleBenis}>benis</Button>
             </Toolbar>
         </AppBar>)
 };

@@ -1,5 +1,4 @@
 import API from '../utils/axiosConfig';
-
 export function postUserToDataBase(data) {
     if (!data.id) {
         console.error("No ID was provided for new user");
