@@ -1,26 +1,18 @@
 import React, {useState} from 'react'
 import { connect } from "react-redux";
-import app from "../../../firebase/base";
-import {Link, withRouter} from "react-router-dom";
+import {Link, Redirect, withRouter} from "react-router-dom";
 import {Button, Card, CardActions, CardContent, Grid, TextField, Typography} from "@material-ui/core";
 import classes from "../AuthPage.module.css";
 import '../../../App.css'
-// import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";
-// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 import { userLoggingInSystem } from "../../../store/actions/currentUser";
+import {auth} from "../../../store/actions";
 
-const Login = ({history}) => {
+const Login = (props) => {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
 
-     const handleLogin = async () => {
-         try {
-             await app.auth().signInWithEmailAndPassword(email, password);
-             const user = app.auth().currentUser;
-             history.push('/');
-         } catch (e) {
-             alert(e);
-         }
+     const handleLogin = () => {
+         props.onSignUp(email, password, false);
      };
      const handleEmailChange = (e) => {
          setEmail(e.target.value);
@@ -28,8 +20,13 @@ const Login = ({history}) => {
      const handlePasswordChange = (e) => {
          setPassword(e.target.value);
      };
+    let authRedirect = null;
+    if (props.isValidUser) {
+        authRedirect = <Redirect to="/" />
+    }
      return (
              <React.Fragment>
+                 {authRedirect}
                  <div className={classes.wrapper}>
                      <Card className={classes.AuthCard}>
                          <CardContent>
@@ -67,14 +64,14 @@ const Login = ({history}) => {
      )
  };
  const mapStateToProps = state => {
-    return {
-        currentUser: state.currUser.currentUser
-    }
+     return {
+         isValidUser: !!state.auth.token
+     }
  };
  const mapDispatchToProps = dispatch => {
-   return {
-       onUserLogging:  (id) => {dispatch(userLoggingInSystem(id))}
-   }
+     return {
+         onSignUp: ( email, password, isSignup ) => dispatch( auth( email, password, isSignup ) )
+     }
  };
 
  export default connect(mapStateToProps, mapDispatchToProps)(Login);

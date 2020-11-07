@@ -7,5 +7,6 @@ export { userSignedUpInSystem } from './currentUser'
 
 export {
     auth,
-    logout
+    logout,
+    authCheckState
 } from './auth';
