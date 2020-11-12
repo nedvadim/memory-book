@@ -3,7 +3,7 @@ import { addNewPerson } from "../../api";
 
 export const postPerson = (data) => {
     return dispatch => {
-
+        addNewPerson(data)
     };
 };
 

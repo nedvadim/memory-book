@@ -7,7 +7,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch ( action.type ) {
         case actionTypes.PERSON_ADD:
-            return { ...state, isMainDrawerOpened: true};
+            return { ...state, persons: [...state.persons, action.payload]};
     }
     return state;
 };

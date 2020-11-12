@@ -3,10 +3,15 @@ import { connect } from 'react-redux'
 import { Alert } from '@material-ui/lab'
 import { IconButton } from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
+import { addNewPerson } from "../../../api";
 
 const Persons = (props) => {
     const postPerson = () => {
-
+        addNewPerson({name: 'john', age: 20}).then(res => {
+            console.log(res)
+        }).catch((e) => {
+            console.log(e);
+        })
     };
     return (
         <>
