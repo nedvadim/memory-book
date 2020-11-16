@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Alert } from '@material-ui/lab'
 import { IconButton } from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
-import { addNewPerson, getPersons } from "../../../api";
+import { addNewPerson, getPersons, editPerson } from "../../../api";
 
 const Persons = (props) => {
     const postPerson = () => {
@@ -21,6 +21,13 @@ const Persons = (props) => {
       console.log(e);
     })
   };
+  const edit = () => {
+    editPerson().then(res => {
+      console.log(res)
+    }).catch((e) => {
+      console.log(e);
+    })
+  };
     return (
         <>
             <h1 className="MainHeadersMB">Persons</h1>
@@ -28,6 +35,9 @@ const Persons = (props) => {
             <IconButton color="primary" aria-label="Add person" component="span">
                 <AddIcon onClick={getPersonsList} />
             </IconButton>
+          <IconButton color="success" aria-label="Add person" component="span">
+            <AddIcon onClick={edit} />
+          </IconButton>
         </>
     )
 };
