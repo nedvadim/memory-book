@@ -1,2 +1,2 @@
 export { postUserToDataBase } from "./users";
-export { addNewPerson } from "./persons"
+export { addNewPerson, getPersons } from "./persons"
