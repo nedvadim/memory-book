@@ -10,3 +10,8 @@ export {
     logout,
     authCheckState
 } from './auth';
+
+export {
+    personAdd,
+    postPerson
+} from './persons'

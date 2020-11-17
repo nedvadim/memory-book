@@ -8,7 +8,8 @@ import {
 import { openMainDrawer, closeMainDrawer } from '../../store/actions/index'
 import Header from "../../components/Header/Header";
 import WelcomePage from "../../components/Content/WelcomePage/WelcomePage";
-import Persons from "../../components/Content/Persons/Persons";
+import Persons from "../../components/Content/PersonsComponents/Persons/Persons";
+import AddPerson from "../../components/Content/PersonsComponents/AddPerson/AddPerson";
 import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
 import ContentSection from "../ContentSection/ContentSection";
@@ -34,6 +35,7 @@ class MainContentWrapper extends React.Component {
                                 <PrivateRoute path="/" exact component={WelcomePage} />
                                 <PrivateRoute path="/persons" component={Persons} />
                                 <PrivateRoute path="/events" component={Events} />
+                                <PrivateRoute path="/add-person" component={AddPerson} />
                             </Switch>
                         </ContentSection>
                     </Router>

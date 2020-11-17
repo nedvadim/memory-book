@@ -11,6 +11,6 @@ export function addNewPerson(data) {
 export function getPersons() {
     return API.get(`/persons.json${queryParams}`);
 }
-export function editPerson(data) {
-    return API.patch(`/persons/STUPID_UNIQ_FB_KEY_MAYBE_GET_IT_FROM_DATA/.json?auth=${token}`, { name: 'Vadim' })
+export function editPerson(uniqKey, data) {
+    return API.patch(`/persons/${uniqKey}/.json?auth=${token}`, { name: 'Vadim' })
 }
