@@ -32,10 +32,10 @@ class MainContentWrapper extends React.Component {
                         </>
                         <ContentSection>
                             <Switch>
-                                <PrivateRoute path="/" exact component={WelcomePage} />
                                 <PrivateRoute path="/persons" component={Persons} />
                                 <PrivateRoute path="/events" component={Events} />
                                 <PrivateRoute path="/add-person" component={AddPerson} />
+                                <PrivateRoute path="/" exact component={WelcomePage} />
                             </Switch>
                         </ContentSection>
                     </Router>
