@@ -18,7 +18,7 @@ export const getAllPersonsList = () => {
             const {data} = await getPersons();
             const personsArr = Object.values(data);
             console.log(personsArr);
-            dispatch(personsInit(personsArr));
+            dispatch(personsInit([...personsArr]));
         } catch (e) {
             console.error(e)
         }
