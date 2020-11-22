@@ -73,4 +73,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AuthPage));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthPage));

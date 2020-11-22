@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from "react-router";
 
 const WelcomePage = () => {
     return (
@@ -6,4 +7,4 @@ const WelcomePage = () => {
     )
 };
 
-export default WelcomePage;
+export default withRouter(WelcomePage);

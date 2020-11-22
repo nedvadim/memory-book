@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {TextField, Button} from '@material-ui/core';
 import classes from './AddPerson.module.css'
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import {postPerson} from "../../../../store/actions";
 const AddPerson = (props) => {
   const [personForm, setState] = useState({
@@ -42,5 +43,5 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPerson)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddPerson))
 

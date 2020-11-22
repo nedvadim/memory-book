@@ -4,7 +4,7 @@ import {
     BrowserRouter as Router,
     Switch
 } from "react-router-dom";
-
+import { withRouter } from "react-router";
 import { openMainDrawer, closeMainDrawer } from '../../store/actions/index'
 import Header from "../../components/Header/Header";
 import WelcomePage from "../../components/Content/WelcomePage/WelcomePage";
@@ -16,29 +16,17 @@ import ContentSection from "../ContentSection/ContentSection";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 class MainContentWrapper extends React.Component {
-    componentDidMount() {
-        //
-    }
-    getTestData = async () => {};
     render () {
         return (
             <React.Fragment>
-                    <Router>
-                        <>
+
                             <Header onMenuOpen={this.props.onDrawerOpen} />
                             <MainDrawer
                                 isOpen={this.props.isDrOpen}
                                 onClose={this.props.onDrawerClose}/>
-                        </>
                         <ContentSection>
-                            <Switch>
-                                <PrivateRoute path="/persons" component={Persons} />
-                                <PrivateRoute path="/events" component={Events} />
-                                <PrivateRoute path="/add-person" component={AddPerson} />
-                                <PrivateRoute path="/" exact component={WelcomePage} />
-                            </Switch>
+                            {this.props.children}
                         </ContentSection>
-                    </Router>
             </React.Fragment>
         )
     }
@@ -56,4 +44,4 @@ const mapDispatchToProps = dispatch => {
         onDrawerClose: () => dispatch(closeMainDrawer())
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(MainContentWrapper);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContentWrapper));

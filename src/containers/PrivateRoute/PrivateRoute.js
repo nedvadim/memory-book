@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
-// import {AuthContext} from "../../auth/Auth";
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-    // const {currentUser} = useContext(AuthContext);
-    console.log(rest.isAuthenticated);
     return (
         <Route {...rest}
                render={routeProps =>
