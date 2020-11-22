@@ -1,13 +1,21 @@
 import * as actionTypes from "./actionTypes";
-import { addNewPerson } from "../../api";
+import { addNewPerson, editPerson } from "../../api";
+
+async function postAndPatch(personData) {
+    try{
+        const {data} = await addNewPerson(personData);
+        await editPerson(data.name, { uniqFirebaseKey: data.name });
+        return { ...personData, uniqFirebaseKey: data.name };
+    } catch (e) {
+        console.error(e);
+        return null
+    }
+}
 
 export const postPerson = (personData) => {
-    return dispatch => {
-        addNewPerson(personData).then(({data}) => {
-            console.log(data.name);
-        }).catch((e) => {
-            console.error(e);
-        })
+    return async dispatch => {
+        const res = await postAndPatch(personData);
+        console.log('RES: ', res);
     };
 };
 

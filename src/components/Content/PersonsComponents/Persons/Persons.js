@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Alert } from '@material-ui/lab'
 import { IconButton } from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
 const Persons = (props) => {
+  useEffect(() => {
+    console.log('USE EFFECT!')
+  });
     return (
         <>
             <h1 className="MainHeadersMB">Persons</h1>
