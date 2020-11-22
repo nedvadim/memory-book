@@ -1,8 +1,7 @@
 import React from 'react'
 import {Alert} from "@material-ui/lab";
 import {IconButton} from "@material-ui/core";
-import AddIcon from "@material-ui/core/SvgIcon/SvgIcon";
-
+import AddIcon from '@material-ui/icons/Add';
 const Events = () => {
     return (
         <>

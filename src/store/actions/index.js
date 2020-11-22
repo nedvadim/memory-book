@@ -1,3 +1,5 @@
+import {personsInit} from "./persons";
+
 export {
     openMainDrawer,
     closeMainDrawer
@@ -13,5 +15,7 @@ export {
 
 export {
     personAdd,
-    postPerson
+    postPerson,
+    getAllPersonsList,
+    personsInit
 } from './persons'

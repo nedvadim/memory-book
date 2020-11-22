@@ -1,19 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-    BrowserRouter as Router,
-    Switch
-} from "react-router-dom";
 import { withRouter } from "react-router";
 import { openMainDrawer, closeMainDrawer } from '../../store/actions/index'
 import Header from "../../components/Header/Header";
-import WelcomePage from "../../components/Content/WelcomePage/WelcomePage";
-import Persons from "../../components/Content/PersonsComponents/Persons/Persons";
-import AddPerson from "../../components/Content/PersonsComponents/AddPerson/AddPerson";
-import Events from "../../components/Content/Events/Events";
 import MainDrawer from "../../components/MainDrawer/MainDrawer";
 import ContentSection from "../ContentSection/ContentSection";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 class MainContentWrapper extends React.Component {
     render () {

@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import mainDrawerReducer from './store/reducers/drawer'
 import currUser from './store/reducers/currentUser'
 import auth from './store/reducers/auth'
+import persons from './store/reducers/persons'
 
 const rootReducer = combineReducers({
     mainDrawer: mainDrawerReducer,
     currUser,
-    auth
+    auth,
+    persons
 });
 
 const logger = store => {

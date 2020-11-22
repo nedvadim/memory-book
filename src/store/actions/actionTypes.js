@@ -7,3 +7,5 @@ export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 export const PERSON_ADD = 'PERSON_ADD';
+export const PERSONS_INIT = "PERSONS_INIT";
+export const SET_PERSONS_LOADER = "SET_PERSONS_LOADER";
