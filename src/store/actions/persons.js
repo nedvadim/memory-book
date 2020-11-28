@@ -17,7 +17,6 @@ export const getAllPersonsList = () => {
         try {
             const {data} = await getPersons();
             const personsArr = Object.values(data);
-            console.log(personsArr);
             dispatch(personsInit([...personsArr]));
         } catch (e) {
             console.error(e)
@@ -43,7 +42,6 @@ export const personAdd = (data) => {
 };
 
 export const personsInit = (data) => {
-    console.log('persons init');
     return {
         type: actionTypes.PERSONS_INIT,
         payload: data

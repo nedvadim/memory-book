@@ -6,7 +6,6 @@ export function addNewPerson(data) {
     return API.post(`/persons.json?auth=${token}`, { ...data, userId });
 }
 export function getPersons() {
-  console.log('in api call');
     const { queryParams } = getAuthData();
     return API.get(`/persons.json${queryParams}`);
 }

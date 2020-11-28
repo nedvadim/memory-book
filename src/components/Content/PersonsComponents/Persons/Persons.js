@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import {getAllPersonsList} from "../../../../store/actions";
-import Table from "../../../common/Table/Table";
+import CustomTable from "../../../common/CustomTable/CustomTable";
 const Persons = (props) => {
   const [personsHeaders] = useState(['Name', 'Surname', 'Age', 'HomeTown']);
   useEffect(() => {
@@ -15,7 +15,7 @@ const Persons = (props) => {
   }, []);
     return (
         <>
-            <h1 className="MainHeadersMB">Persons</h1>
+          <h1 className="MainHeadersMB">Persons</h1>
           <Link to="/add-person">
             <IconButton color="primary" aria-label="Add person" component="span">
               <AddIcon />
@@ -23,7 +23,7 @@ const Persons = (props) => {
           </Link>
             {props.persons.length
               ?
-              <Table dataset={ props.persons } headers={ personsHeaders }/>
+              <CustomTable dataset={ props.persons } headers={ personsHeaders }/>
               : <Alert severity="warning" className="MainHeadersMB">You haven't any persons in your memory book yet</Alert>}
         </>
     )

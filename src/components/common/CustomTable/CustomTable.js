@@ -1,23 +1,17 @@
-import React, {useEffect} from 'react'
-import {Paper, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
+import React from 'react'
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 
-const Table = (props) => {
-  useEffect(() => {
-    console.log(props.dataset);
-  }, []);
+const CustomTable = (props) => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Surname</TableCell>
-            <TableCell>Age</TableCell>
-            <TableCell>Hometown</TableCell>
+            { props.headers.map((h) => (<TableCell key={h}>{h}</TableCell>))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.dataset.map((row) => (
+          {props.dataset && props.dataset.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
@@ -33,4 +27,4 @@ const Table = (props) => {
   )
 };
 
-export default Table;
+export default CustomTable;
