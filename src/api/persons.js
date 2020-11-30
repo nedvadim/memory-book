@@ -13,3 +13,7 @@ export function editPerson(uniqKey, data) {
     const { token } = getAuthData();
     return API.patch(`/persons/${uniqKey}/.json?auth=${token}`, { ...data })
 }
+export function getPersonById(id) {
+  const { token } = getAuthData();
+  return API.get(`/persons/${id}.json?auth=${token}`);
+}
