@@ -8,7 +8,7 @@ import { withRouter } from "react-router";
 import {getAllPersonsList} from "../../../../store/actions";
 import CustomTable from "../../../common/CustomTable/CustomTable";
 const Persons = (props) => {
-  const [personsHeaders] = useState(['Name', 'Surname', 'Age', 'HomeTown']);
+  const [personsHeaders] = useState(['Name', 'Surname', 'Age', 'HomeTown', 'Actions']);
   useEffect(() => {
     props.fetchPersons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,7 +23,7 @@ const Persons = (props) => {
           </Link>
             {props.persons.length
               ?
-              <CustomTable dataset={ props.persons } headers={ personsHeaders }/>
+              <CustomTable dataset={ props.persons } headers={ personsHeaders }> </CustomTable>
               : <Alert severity="warning" className="MainHeadersMB">You haven't any persons in your memory book yet</Alert>}
         </>
     )

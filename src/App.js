@@ -13,6 +13,7 @@ import {authCheckState} from "./store/actions";
 import WelcomePage from "./components/Content/WelcomePage/WelcomePage";
 import Persons from "./components/Content/PersonsComponents/Persons/Persons";
 import Events from "./components/Content/Events/Events";
+import ViewPerson from "./components/Content/PersonsComponents/ViewPerson/ViewPerson";
 import AddPerson from "./components/Content/PersonsComponents/AddPerson/AddPerson";
 import MainContentWrapper from "./containers/MainContentWrapper/MainContentWrapper";
 
@@ -29,6 +30,7 @@ class App extends React.Component {
                     <MainContentWrapper>
                           <PrivateRoute exact path="/" component={WelcomePage} />
                           <PrivateRoute path="/persons" component={Persons} />
+                          <PrivateRoute path="/person/:id" component={ViewPerson} />
                           <PrivateRoute path="/events" component={Events} />
                           <PrivateRoute path="/add-person" component={AddPerson} />
                     </MainContentWrapper>

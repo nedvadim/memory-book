@@ -21,7 +21,7 @@ const AddPerson = (props) => {
   };
   const postPersonAndGoBack = async (person) => {
     try {
-      await props.onPersonAdd(null);
+      await props.onPersonAdd(personForm);
       history.push("/persons");
     } catch (e) {
       console.error(e)
@@ -35,16 +35,10 @@ const AddPerson = (props) => {
         <TextField className={classes.Input} name="surname" label="Surname" onChange={updateField}/>
         <TextField className={classes.Input} name="age" label="Age" type="number" onChange={updateField}/>
         <TextField className={classes.Input} name="hometown" label="Hometown" onChange={updateField}/>
-        <Button variant="contained" className={classes.Button} color="primary" onClick={() => {postPersonAndGoBack(personForm)}}>Save</Button>
+        <Button variant="contained" color="primary" onClick={() => {postPersonAndGoBack(personForm)}}>Save</Button>
       </form>
     </>
   )
-};
-
-const mapStateToProps = () => {
-  return {
-
-  }
 };
 
 const mapDispatchToProps = dispatch => {
@@ -53,5 +47,5 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddPerson))
+export default withRouter(connect(null, mapDispatchToProps)(AddPerson))
 

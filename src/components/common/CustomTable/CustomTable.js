@@ -1,6 +1,7 @@
 import React from 'react'
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
-
+import { Link } from "react-router-dom";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const CustomTable = (props) => {
   return (
     <TableContainer component={Paper}>
@@ -19,6 +20,11 @@ const CustomTable = (props) => {
               <TableCell>{row.surname}</TableCell>
               <TableCell>{row.age}</TableCell>
               <TableCell>{row.hometown}</TableCell>
+              <TableCell>
+                <Link to={'/person/' + row.uniqFirebaseKey}>
+                  <ExitToAppIcon />
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
