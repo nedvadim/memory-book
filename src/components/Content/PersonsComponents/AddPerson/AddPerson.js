@@ -35,7 +35,7 @@ const AddPerson = (props) => {
         <TextField className={classes.Input} name="surname" label="Surname" onChange={updateField}/>
         <TextField className={classes.Input} name="age" label="Age" type="number" onChange={updateField}/>
         <TextField className={classes.Input} name="hometown" label="Hometown" onChange={updateField}/>
-        <Button variant="contained" color="primary" onClick={() => {postPersonAndGoBack(personForm)}}>Save</Button>
+        <Button className="mt-1" variant="contained" color="primary" onClick={() => {postPersonAndGoBack(personForm)}}>Save</Button>
       </form>
     </>
   )
