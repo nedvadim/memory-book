@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import {postPerson} from "../../../../store/actions";
 import { useHistory } from "react-router-dom";
-import validTypes from "../../../../utils/validation/validationTypes";
-import * as validation from  "../../../../utils/validation/validationUtility";
 const AddPerson = (props) => {
   const history = useHistory();
   const [personForm, setState] = useState({
@@ -15,10 +13,6 @@ const AddPerson = (props) => {
     age: null,
     hometown: ''
   });
-  const [validationData] = useState({
-    name: [validTypes.NOT_EMPTY],
-    surname: [validTypes.NOT_EMPTY]
-  });
   const updateField = e => {
     setState({
       ...personForm,
@@ -26,14 +20,12 @@ const AddPerson = (props) => {
     });
   };
   const postPersonAndGoBack = async () => {
-    // validate data
-    validation.isValid(personForm, validationData);
-    // try {
-    //   await props.onPersonAdd(personForm);
-    //   history.push("/persons");
-    // } catch (e) {
-    //   console.error(e)
-    // }
+    try {
+      await props.onPersonAdd(personForm);
+      history.push("/persons");
+    } catch (e) {
+      console.error(e)
+    }
   };
   return (
     <>
