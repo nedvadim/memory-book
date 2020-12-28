@@ -10,14 +10,13 @@ class MainContentWrapper extends React.Component {
     render () {
         return (
             <React.Fragment>
-
-                            <Header onMenuOpen={this.props.onDrawerOpen} />
-                            <MainDrawer
-                                isOpen={this.props.isDrOpen}
-                                onClose={this.props.onDrawerClose}/>
-                        <ContentSection>
-                            {this.props.children}
-                        </ContentSection>
+                <Header onMenuOpen={this.props.onDrawerOpen} />
+                <MainDrawer
+                  isOpen={this.props.isDrOpen}
+                  onClose={this.props.onDrawerClose}/>
+                <ContentSection>
+                  {this.props.children}
+                </ContentSection>
             </React.Fragment>
         )
     }
