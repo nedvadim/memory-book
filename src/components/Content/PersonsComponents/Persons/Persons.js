@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import { Alert } from '@material-ui/lab';
 import { IconButton } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
@@ -13,6 +14,10 @@ const Persons = (props) => {
     props.fetchPersons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const pageContent = props.persons.length
+    ?
+    <CustomTable dataset={ props.persons } headers={ personsHeaders }> </CustomTable>
+    : <Alert severity="warning" className="MainHeadersMB">You haven't any persons in your memory book yet</Alert>
     return (
         <>
           <h1 className="MainHeadersMB">Persons</h1>
@@ -21,16 +26,14 @@ const Persons = (props) => {
               <AddIcon />
             </IconButton>
           </Link>
-            {props.persons.length
-              ?
-              <CustomTable dataset={ props.persons } headers={ personsHeaders }> </CustomTable>
-              : <Alert severity="warning" className="MainHeadersMB">You haven't any persons in your memory book yet</Alert>}
+            {props.personsLoading ? <CircularProgress /> : (pageContent)}
         </>
     )
 };
 const mapStateToProps = state => {
   return {
-    persons: state.persons.persons
+    persons: state.persons.persons,
+    personsLoading: state.persons.personsLoading
   }
 };
 

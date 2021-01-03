@@ -15,10 +15,13 @@ async function postAndPatch(personData) {
 export const getAllPersonsList = () => {
     return async dispatch => {
         try {
+            dispatch(setPersonsLoader(true));
             const {data} = await getPersons();
             const personsArr = Object.values(data);
             dispatch(personsInit([...personsArr]));
+            dispatch(setPersonsLoader(false));
         } catch (e) {
+            dispatch(setPersonsLoader(false));
             console.error(e)
         }
     }
