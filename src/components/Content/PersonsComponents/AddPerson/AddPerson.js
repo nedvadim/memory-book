@@ -3,9 +3,10 @@ import {TextField, Button} from '@material-ui/core';
 import classes from './AddPerson.module.css'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import {logout, postPerson} from "../../../../store/actions";
+import { postPerson } from "../../../../store/actions";
 import { useHistory } from "react-router-dom";
 import { getValidationErrors } from "../../../../utils/validation/validationUtility";
+import { capitalize } from "../../../../utils/helperFunctions";
 import { NOT_NEGATIVE, NOT_EMPTY, EMAIL } from "../../../../utils/validation/validationTypes";
 
 const AddPerson = (props) => {
@@ -63,35 +64,18 @@ const AddPerson = (props) => {
     <>
       <h2 className="MainHeadersMB">Add new person</h2>
       <form className={classes.FormWrapper}>
-        <TextField
-          className={classes.Input}
-          name="name"
-          label="Name"
-          error={!!personFormErrors.name.length}
-          helperText={personFormErrors.name}
-          onChange={updateField}/>
-        <TextField
-          className={classes.Input}
-          name="surname"
-          label="Surname"
-          error={!!personFormErrors.surname.length}
-          helperText={personFormErrors.surname}
-          onChange={updateField}/>
-        <TextField
-          className={classes.Input}
-          name="age"
-          label="Age"
-          type="number"
-          error={!!personFormErrors.age.length}
-          helperText={personFormErrors.age}
-          onChange={updateField}/>
-        <TextField
-          className={classes.Input}
-          name="hometown"
-          label="Hometown"
-          error={!!personFormErrors.hometown.length}
-          helperText={personFormErrors.hometown}
-          onChange={updateField}/>
+        {
+          Object.keys(personForm).map(fieldName => (
+            <TextField
+              className={classes.Input}
+              name={fieldName}
+              label={capitalize(fieldName)}
+              error={!!personFormErrors[fieldName].length}
+              helperText={personFormErrors[fieldName]}
+              onChange={updateField}/>
+            )
+          )
+        }
         <Button className="mt-1" variant="contained" color="primary" onClick={() => {handleSubmit(personForm)}}>Save</Button>
       </form>
     </>
