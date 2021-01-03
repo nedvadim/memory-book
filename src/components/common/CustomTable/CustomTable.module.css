@@ -1,3 +1,8 @@
 .ViewIcon {
     color: #174f94;
 }
+.HeaderColumn {
+    font-weight: bold;
+    font-size: 16px;
+    color: #565656
+}
