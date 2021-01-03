@@ -42,13 +42,13 @@ const CustomTable = (props) => {
         <TableBody>
           {currentDataset && currentDataset.map((row) => (
             <TableRow key={row.name}>
-              <TableCell>
+              <TableCell className={classes.TableCell}>
                 {row.name}
               </TableCell>
-              <TableCell>{row.surname}</TableCell>
-              <TableCell>{row.age}</TableCell>
-              <TableCell>{row.hometown}</TableCell>
-              <TableCell>
+              <TableCell className={classes.TableCell}>{row.surname}</TableCell>
+              <TableCell className={classes.TableCell}>{row.age}</TableCell>
+              <TableCell className={classes.TableCell}>{row.hometown}</TableCell>
+              <TableCell className={classes.TableCell}>
                 <Link to={'/person/' + row.uniqFirebaseKey}>
                   <ExitToAppIcon className={classes.ViewIcon} />
                 </Link>
