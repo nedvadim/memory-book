@@ -60,6 +60,12 @@ const AddPerson = (props) => {
     }
     return false;
   };
+  const clearErrors = (fieldName) => {
+    setPersonFormErrors({
+      ...personFormErrors,
+      [fieldName]: ''
+    });
+  };
   return (
     <>
       <h2 className="MainHeadersMB">Add new person</h2>
@@ -72,7 +78,8 @@ const AddPerson = (props) => {
               label={capitalize(fieldName)}
               error={!!personFormErrors[fieldName].length}
               helperText={personFormErrors[fieldName]}
-              onChange={updateField}/>
+              onChange={updateField}
+              onFocus={() => { clearErrors(fieldName) }}/>
             )
           )
         }
