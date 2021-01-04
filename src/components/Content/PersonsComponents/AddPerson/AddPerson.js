@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { getValidationErrors } from "../../../../utils/validation/validationUtility";
 import { capitalize } from "../../../../utils/helperFunctions";
 import { NOT_NEGATIVE, NOT_EMPTY, EMAIL } from "../../../../utils/validation/validationTypes";
+import CustomSnackbar from "../../../common/Snackbar/CustomSnackbar";
 
 const AddPerson = (props) => {
   const history = useHistory();
@@ -23,6 +24,10 @@ const AddPerson = (props) => {
     age: '',
     hometown: ''
   });
+  const [isToastrOpen, setIsToastrOpen] = useState(false);
+  const [toastrHideTime] = useState(1700);
+  const [toastrColor] = useState('success');
+  const [toastrMessage] = useState('SUCCESS');
   const updateField = e => {
     setState({
       ...personForm,
@@ -32,7 +37,10 @@ const AddPerson = (props) => {
   const postPersonAndGoBack = async () => {
     try {
       await props.onPersonAdd(personForm);
-      history.push("/persons");
+      setIsToastrOpen(true);
+      setTimeout(() => {
+        history.push("/persons");
+      }, toastrHideTime)
     } catch (e) {
       console.error(e)
     }
@@ -84,6 +92,11 @@ const AddPerson = (props) => {
           )
         }
         <Button className="mt-1" variant="contained" color="primary" onClick={() => {handleSubmit(personForm)}}>Save</Button>
+        <CustomSnackbar
+          isOpen={isToastrOpen}
+          hideDuration={toastrHideTime}
+          toastrColor={toastrColor}
+          toastrMessage={toastrMessage}/>
       </form>
     </>
   )
