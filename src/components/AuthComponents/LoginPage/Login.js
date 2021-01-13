@@ -10,7 +10,6 @@ import {auth} from "../../../store/actions";
 const Login = (props) => {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
-
      const handleLogin = () => {
          props.onSignUp(email, password, false);
      };

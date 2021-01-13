@@ -5,6 +5,7 @@ export const USER_SIGNED_UP_IN_SYSTEM = 'USER_SIGNED_UP_IN_SYSTEM';
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const SET_AUTH_LOADER = 'AUTH_LOADER';
 
 export const PERSON_ADD = 'PERSON_ADD';
 export const PERSONS_INIT = "PERSONS_INIT";

@@ -20,6 +20,7 @@ import MainContentWrapper from "./containers/MainContentWrapper/MainContentWrapp
 class App extends React.Component {
     componentDidMount() {
         this.props.onSignInTry();
+      console.log('in app');
     }
 
     render() {
