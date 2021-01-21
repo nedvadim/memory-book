@@ -9,7 +9,7 @@ import { getValidationErrors } from "../../../../utils/validation/validationUtil
 import { capitalize } from "../../../../utils/helperFunctions";
 import { NOT_NEGATIVE, NOT_EMPTY, EMAIL } from "../../../../utils/validation/validationTypes";
 import CustomSnackbar from "../../../common/Snackbar/CustomSnackbar";
-
+import firebase from "../../../../firebase/base"
 const AddPerson = (props) => {
   const history = useHistory();
   const [personForm, setState] = useState({
@@ -26,8 +26,8 @@ const AddPerson = (props) => {
   });
   const [isToastrOpen, setIsToastrOpen] = useState(false);
   const [toastrHideTime] = useState(1700);
-  const [toastrColor] = useState('success');
-  const [toastrMessage] = useState('SUCCESS');
+  const [toastrColor, setToastrColor] = useState('success');
+  const [toastrMessage, setToastrMessage] = useState('SUCCESS');
   const updateField = e => {
     setState({
       ...personForm,
@@ -37,6 +37,8 @@ const AddPerson = (props) => {
   const postPersonAndGoBack = async () => {
     try {
       await props.onPersonAdd(personForm);
+      setToastrMessage('Person added!');
+      setToastrColor('success');
       setIsToastrOpen(true);
       setTimeout(() => {
         history.push("/persons");
@@ -68,6 +70,20 @@ const AddPerson = (props) => {
     }
     return false;
   };
+  const onFileChange = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    const storageRef = firebase.storage().ref();
+    console.log(storageRef);
+    const fileRef = storageRef.child(file.name);
+    fileRef.put(file).then(() => {
+      console.log("Uploaded file");
+    }).catch((e) => {
+      setToastrMessage('File upload error');
+      setToastrColor('danger');
+      setIsToastrOpen(true);
+    })
+  };
   const clearErrors = (fieldName) => {
     setPersonFormErrors({
       ...personFormErrors,
@@ -91,6 +107,7 @@ const AddPerson = (props) => {
             )
           )
         }
+        <input type="file" onChange={onFileChange}/>
         <Button className="mt-1" variant="contained" color="primary" onClick={() => {handleSubmit(personForm)}}>Save</Button>
         <CustomSnackbar
           isOpen={isToastrOpen}
