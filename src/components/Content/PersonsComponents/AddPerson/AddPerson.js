@@ -37,7 +37,7 @@ const AddPerson = (props) => {
   };
   const postPersonAndGoBack = async () => {
     try {
-      await props.onPersonAdd(personForm);
+      await props.onPersonAdd({ ...personForm, avatarURL });
       setToastrMessage('Person added!');
       setToastrColor('success');
       setIsToastrOpen(true);
@@ -73,14 +73,12 @@ const AddPerson = (props) => {
   };
   const onFileChange = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const storageRef = firebase.storage().ref();
-    console.log(storageRef);
     const fileRef = storageRef.child(file.name);
     try {
       await fileRef.put(file);
-      setAvatarURL(await fileRef.getDownloadURL());
-      console.log(avatarURL);
+      const url = await fileRef.getDownloadURL();
+      setAvatarURL(url);
     } catch (e) {
       setToastrMessage('File upload error');
       setToastrColor('danger');
@@ -111,6 +109,10 @@ const AddPerson = (props) => {
           )
         }
         <input type="file" onChange={onFileChange}/>
+        {
+          avatarURL &&
+          <img  width={100} src={avatarURL} />
+        }
         <Button className="mt-1" variant="contained" color="primary" onClick={() => {handleSubmit(personForm)}}>Save</Button>
         <CustomSnackbar
           isOpen={isToastrOpen}

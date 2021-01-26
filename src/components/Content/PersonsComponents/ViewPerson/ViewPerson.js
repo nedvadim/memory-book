@@ -24,7 +24,13 @@ const ViewPerson = (props) => {
     <>
       <h1 className="MainHeadersMB">Person Overview</h1>
       {viewedPerson ?
-        (personsKeys.map(key => (<p key={key} ><strong>{key}:</strong> {viewedPerson[key]}</p>)))
+        (personsKeys.map(key => {
+          if(key !== 'avatarURL') {
+            return <p key={key} ><strong>{key}:</strong> {viewedPerson[key]}</p>
+          } else {
+            return <img  width={100} src={viewedPerson[key]} />
+          }
+        }))
         :
         <CircularProgress />
       }
