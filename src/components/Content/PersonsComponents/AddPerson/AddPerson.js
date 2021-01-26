@@ -18,6 +18,7 @@ const AddPerson = (props) => {
     age: '',
     hometown: ''
   });
+  const [avatarURL, setAvatarURL] = useState(null);
   const [personFormErrors, setPersonFormErrors] = useState({
     name: '',
     surname: '',
@@ -70,19 +71,21 @@ const AddPerson = (props) => {
     }
     return false;
   };
-  const onFileChange = (e) => {
+  const onFileChange = async (e) => {
     const file = e.target.files[0];
     console.log(file);
     const storageRef = firebase.storage().ref();
     console.log(storageRef);
     const fileRef = storageRef.child(file.name);
-    fileRef.put(file).then(() => {
-      console.log("Uploaded file");
-    }).catch((e) => {
+    try {
+      await fileRef.put(file);
+      setAvatarURL(await fileRef.getDownloadURL());
+      console.log(avatarURL);
+    } catch (e) {
       setToastrMessage('File upload error');
       setToastrColor('danger');
       setIsToastrOpen(true);
-    })
+    };
   };
   const clearErrors = (fieldName) => {
     setPersonFormErrors({
