@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { getPersonById } from "../../../../api/persons";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import classes from './ViewPerson.module.css'
 const ViewPerson = (props) => {
   const [viewedPerson, setViewedPerson] = useState(null);
   useEffect(() => {
@@ -24,13 +25,16 @@ const ViewPerson = (props) => {
     <>
       <h1 className="MainHeadersMB">Person Overview</h1>
       {viewedPerson ?
-        (personsKeys.map(key => {
-          if(key !== 'avatarURL') {
-            return <p key={key} ><strong>{key}:</strong> {viewedPerson[key]}</p>
-          } else {
-            return <img  width={100} src={viewedPerson[key]} />
-          }
-        }))
+        (
+          <div className={classes.ProfileCard}>
+            <img className={classes.ImageStyling} src={viewedPerson.avatarURL} />
+            <div>
+              <h2>{viewedPerson.name} {viewedPerson.surname}</h2>
+              <p>Home Town: </p> <h4>{viewedPerson.hometown}</h4>
+              <p>Age: </p> <h4>{viewedPerson.age}</h4>
+            </div>
+          </div>
+        )
         :
         <CircularProgress />
       }
