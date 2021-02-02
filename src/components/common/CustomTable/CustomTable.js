@@ -43,6 +43,9 @@ const CustomTable = (props) => {
           {currentDataset && currentDataset.map((row) => (
             <TableRow key={row.name}>
               <TableCell className={classes.TableCell}>
+                <img width={40} src={row.avatarURL} alt={row.surname}/>
+              </TableCell>
+              <TableCell className={classes.TableCell}>
                 {row.name}
               </TableCell>
               <TableCell className={classes.TableCell}>{row.surname}</TableCell>

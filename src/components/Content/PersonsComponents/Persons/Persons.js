@@ -9,7 +9,7 @@ import { withRouter } from "react-router";
 import {getAllPersonsList} from "../../../../store/actions";
 import CustomTable from "../../../common/CustomTable/CustomTable";
 const Persons = (props) => {
-  const [personsHeaders] = useState(['Name', 'Surname', 'Age', 'HomeTown', 'View']);
+  const [personsHeaders] = useState(['Photo', 'Name', 'Surname', 'Age', 'HomeTown', 'View']);
   useEffect(() => {
     props.fetchPersons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
