@@ -3,9 +3,11 @@ import { getPersonById } from "../../../../api/persons";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import CustomDialog from "../../../common/CustomDialog/CustomDialog";
 import classes from './ViewPerson.module.css'
 const ViewPerson = (props) => {
   const [viewedPerson, setViewedPerson] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     getPerson();
   }, []);
@@ -36,6 +38,7 @@ const ViewPerson = (props) => {
                 color="primary"
                 className={classes.ProfileCardAddMoreBtn}
                 startIcon={<AddIcon />}
+                onClick={() => { setIsOpen(!isOpen) }}
               >
                 Add More
               </Button>
@@ -50,6 +53,7 @@ const ViewPerson = (props) => {
                 </div>
               </div>
             </div>
+            <CustomDialog isOpen={isOpen} />
           </div>
         )
         :
