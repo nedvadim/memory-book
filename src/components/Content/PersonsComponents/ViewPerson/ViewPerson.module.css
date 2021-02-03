@@ -1,7 +1,29 @@
-.ImageStyling {
-    width: 200px;
-}
 .ProfileCard {
     display: flex;
     gap: 1rem;
+}
+.ProfileCardImage {
+    width: 200px;
+}
+.ProfileCardDescription {
+    position: relative;
+    width: 100%;
+    background: #d7d7d7;
+    padding: 1rem;
+    font-weight: 700;
+}
+.ProfileCardAddMoreBtn {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+}
+.ProfileCardDescriptionCells {
+    display: flex;
+    gap: 0.5rem;
+}
+.ProfileCardDescriptionCell {
+    text-align: center;
+    background-color: white;
+    width: 120px;
+    padding: 10px;
 }

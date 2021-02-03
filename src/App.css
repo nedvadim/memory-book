@@ -50,3 +50,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .mr-2 {
     margin-right: 2rem !important;
 }
+.secondaryArticleText {
+    color: #b4b4b4;
+    font-weight: 700;
+    font-size: 12px;
+}
+.mainArticleText {
+    color: #4d4d4d;
+    font-size: 20px;
+}

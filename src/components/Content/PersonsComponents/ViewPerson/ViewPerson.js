@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { getPersonById } from "../../../../api/persons";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 import classes from './ViewPerson.module.css'
 const ViewPerson = (props) => {
   const [viewedPerson, setViewedPerson] = useState(null);
@@ -27,11 +29,26 @@ const ViewPerson = (props) => {
       {viewedPerson ?
         (
           <div className={classes.ProfileCard}>
-            <img className={classes.ImageStyling} src={viewedPerson.avatarURL} />
-            <div>
-              <h2>{viewedPerson.name} {viewedPerson.surname}</h2>
-              <p>Home Town: </p> <h4>{viewedPerson.hometown}</h4>
-              <p>Age: </p> <h4>{viewedPerson.age}</h4>
+            <img className={classes.ProfileCardImage} src={viewedPerson.avatarURL} />
+            <div className={classes.ProfileCardDescription}>
+              <h2 className="mb-1">{viewedPerson.name} {viewedPerson.surname}</h2>
+              <Button
+                color="primary"
+                className={classes.ProfileCardAddMoreBtn}
+                startIcon={<AddIcon />}
+              >
+                Add More
+              </Button>
+              <div className={classes.ProfileCardDescriptionCells}>
+                <div className={classes.ProfileCardDescriptionCell}>
+                  <p className="secondaryArticleText">Home Town </p>
+                  <h4 className="mainArticleText">{viewedPerson.hometown}</h4>
+                </div>
+                <div className={classes.ProfileCardDescriptionCell}>
+                  <p className="secondaryArticleText">Age </p>
+                  <h4 className="mainArticleText">{viewedPerson.age}</h4>
+                </div>
+              </div>
             </div>
           </div>
         )
