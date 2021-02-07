@@ -7,36 +7,22 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function CustomDialog({isOpen}) {
+export default function CustomDialog({isOpen, closeFunc, dialogTitle, children}) {
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     setOpen(isOpen)
   }, [isOpen]);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
+    closeFunc();
   };
 
   return (
     <div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">{dialogTitle}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
+          {children}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

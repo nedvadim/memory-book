@@ -1,16 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import { getPersonById } from "../../../../api/persons";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import CustomDialog from "../../../common/CustomDialog/CustomDialog";
+import AddNewDataToPerson from "../AddNewDataToPerson/AddNewDataToPerson";
 import classes from './ViewPerson.module.css'
+
 const ViewPerson = (props) => {
   const [viewedPerson, setViewedPerson] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const dialogTitle = useMemo(() => {
+    return viewedPerson ? `Add new Info about ${viewedPerson.name}` : ''
+  }, [viewedPerson]);
+
   useEffect(() => {
     getPerson();
   }, []);
+
   const getPerson = async () => {
     const personId = props.match.params.id;
     if (personId) {
@@ -38,7 +46,7 @@ const ViewPerson = (props) => {
                 color="primary"
                 className={classes.ProfileCardAddMoreBtn}
                 startIcon={<AddIcon />}
-                onClick={() => { setIsOpen(!isOpen) }}
+                onClick={() => { setIsOpen(true) }}
               >
                 Add More
               </Button>
@@ -53,7 +61,9 @@ const ViewPerson = (props) => {
                 </div>
               </div>
             </div>
-            <CustomDialog isOpen={isOpen} />
+            <CustomDialog dialogTitle={dialogTitle} isOpen={isOpen} closeFunc={() => { setIsOpen(false) }}>
+              <AddNewDataToPerson />
+            </CustomDialog>
           </div>
         )
         :

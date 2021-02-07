@@ -13,9 +13,9 @@
     font-weight: 700;
 }
 .ProfileCardAddMoreBtn {
-    position: absolute;
-    top: 0.8rem;
-    right: 1rem;
+    position: absolute !important;
+    right: 1rem !important;
+    top:1rem !important;
 }
 .ProfileCardDescriptionCells {
     display: flex;
